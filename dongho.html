@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+body {
+  margin: 0;
+  overflow: hidden;
+  background: transparent;
+}
+#clock {
+  position: absolute;
+  color: #00ffff; /* màu chữ */
+  font-size: 48px; /* cỡ chữ */
+  font-family: monospace;
+  text-shadow: 0 0 10px #00ffff;
+}
+</style>
+</head>
+<body>
+<div id="clock"></div>
+<script>
+function updateClock() {
+  const now = new Date();
+  document.getElementById("clock").textContent =
+    now.toLocaleTimeString('vi-VN', { hour12: false });
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+function moveClock() {
+  const clock = document.getElementById("clock");
+  const x = Math.random() * (window.innerWidth - 150);
+  const y = Math.random() * (window.innerHeight - 60);
+  clock.style.left = x + "px";
+  clock.style.top = y + "px";
+}
+setInterval(moveClock, 2500); // đổi vị trí mỗi 2.5 giây
+moveClock();
+function randomColor() {
+  const color = "#" + Math.floor(Math.random()*16777215).toString(16);
+  document.getElementById("clock").style.color = color;
+}
+setInterval(randomColor, 3000);
+
+</script>
+</body>
+</html>
